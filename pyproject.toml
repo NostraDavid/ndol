@@ -1,0 +1,51 @@
+[build-system]
+requires = ["maturin>=1.9,<2.0"]
+build-backend = "maturin"
+
+[project]
+name = "ndol"
+version = "0.1.0"
+description = "NostraDavid's opinionated Python lint and fix rules."
+readme = "README.md"
+requires-python = ">=3.14"
+authors = [
+    { name = "NostraDavid", email = "55331731+NostraDavid@users.noreply.github.com" },
+]
+license = "MIT"
+classifiers = [
+    "Programming Language :: Rust",
+    "Programming Language :: Python :: 3.14",
+]
+dependencies = []
+
+[project.scripts]
+ndol = "ndol:main"
+
+[dependency-groups]
+dev = [
+    "maturin>=1.9,<2.0",
+    "pytest>=8.4.1",
+    "ruff>=0.12.8",
+    "ty>=0.0.1a26",
+    "uv>=0.8.8",
+]
+
+[tool.maturin]
+features = ["python"]
+module-name = "ndol._native"
+python-source = "python"
+bindings = "pyo3"
+
+[tool.ndol]
+ignore = []
+
+[tool.ruff]
+line-length = 100
+target-version = "py314"
+fix = true
+unsafe-fixes = true
+output-format = "concise"
+
+[tool.ruff.lint]
+select = ["E", "W", "F", "UP", "B", "I", "RUF", "TC", "PTH"]
+ignore = ["E501"]

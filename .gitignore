@@ -1,0 +1,29 @@
+# ignore all direct items, nonrecursively
+/*
+
+# unignore folders
+!.github
+!python
+!src
+!tests
+
+# unignore files
+!.bumpversion.cfg
+!.envrc
+!.gitignore
+!Cargo.lock
+!Cargo.toml
+!Justfile
+!README.md
+!devenv.lock
+!devenv.nix
+!devenv.yaml
+!flake.nix
+!pyproject.toml
+!uv.lock
+
+# reignore subfolders/files *anywhere* in the project
+__pycache__/
+*.egg-info/
+*.py[cod]
+*.so

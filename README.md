@@ -6,11 +6,11 @@ Rust engine.
 
 ## Current Rules
 
-| Code | Rule |
-| --- | --- |
-| `ND001` | Replace `from datetime import ...` with `import datetime as dt`. |
-| `ND002` | Replace `from structlog import get_logger` with `from structlog.stdlib import get_logger`. |
-| `ND003` | Import HTTP client libraries as `http`, for example `import niquests as http`. |
+| Code    | Rule                                                                                                 |
+| ------- | ---------------------------------------------------------------------------------------------------- |
+| `ND001` | Replace `from datetime import ...` with `import datetime as dt`.                                     |
+| `ND002` | Replace `from structlog import get_logger` with `from structlog.stdlib import get_logger`.           |
+| `ND003` | Import HTTP client libraries as `http`, for example `import niquests as http`.                       |
 | `ND004` | Files containing `/// script` must start with `#!/usr/bin/env -S uv run --script` and be executable. |
 
 ## Usage

@@ -44,10 +44,16 @@ ignore = ["ND003"]
 ```bash
 just allow
 just shell
-just sync
+just setup
 just test
 just check
 ```
+
+Run `just update` inside the shell to refresh the devenv, Cargo, and Python
+lockfiles and sync the Python environment. Review the lockfile changes and run
+`just check` afterwards. `just build` builds the Rust CLI and Python wheel.
+The development environment is defined by `devenv.nix` and `devenv.lock`.
+Activate it with `devenv shell` or direnv.
 
 Release builds are prepared for both the Rust crate and Python wheels. The repo
 is intended to work with trunk-based development plus release branches such as

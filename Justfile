@@ -13,6 +13,15 @@ allow:
 shell:
     devenv shell
 
+setup:
+    uv sync --locked --all-groups
+
+update:
+    devenv update
+    cargo update
+    uv lock --upgrade
+    uv sync --locked --all-groups
+
 sync:
     uv sync --all-groups
 
@@ -25,18 +34,22 @@ fmt-check:
     uv run ruff format --check python
 
 lint:
-    cargo clippy --all-targets --all-features -- -D warnings
-    uv run ruff check python
+    cargo clippy --locked --all-targets --all-features -- -D warnings
+    uv run ruff check --no-fix python
 
 test:
-    cargo test --all-features
+    cargo test --locked --all-features
     uv run pytest
 
-check: fmt-check lint test
+check: lock-check fmt-check lint test
+
+lock-check:
+    cargo metadata --locked --format-version 1 --no-deps > /dev/null
+    uv lock --check
 
 build:
-    cargo build --release
-    uv run maturin build --release
+    cargo build --locked --release
+    uv run maturin build --locked --release
 
 develop:
     uv run maturin develop

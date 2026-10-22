@@ -21,13 +21,13 @@ jobs:
           - runner: windows-latest
             target: x64
     steps:
-      - uses: actions/checkout@v5
-      - uses: PyO3/maturin-action@v1
+      - uses: actions/checkout@v7.0.1
+      - uses: PyO3/maturin-action@v1.51.0
         with:
           target: ${{ matrix.platform.target }}
           args: --release --out dist
           sccache: true
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7.0.2
         with:
           name: wheels-${{ matrix.platform.runner }}-${{ matrix.platform.target }}
           path: dist
@@ -35,10 +35,10 @@ jobs:
   rust:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v7.0.1
       - uses: dtolnay/rust-toolchain@stable
-      - run: cargo package
-      - uses: actions/upload-artifact@v4
+      - run: cargo package --locked
+      - uses: actions/upload-artifact@v7.0.2
         with:
           name: rust-crate
           path: target/package/*.crate

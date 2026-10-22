@@ -10,6 +10,8 @@
     RUST_BACKTRACE = "1";
     RUST_SRC_PATH = "${pkgs.rustPlatform.rustLibSrc}/lib/rustlib/src/rust/library";
     UV_PYTHON_DOWNLOADS = "never";
+    UV_PYTHON = "3.14";
+    UV_PYTHON_PREFERENCE = "only-system";
     XDG_UTILS_INSTALL_MODE = "manual";
   };
 
@@ -35,11 +37,6 @@
     if [ -d ".venv" ] && [ -x ".venv/bin/python" ]; then
       export VIRTUAL_ENV="$PWD/.venv"
       export PATH="$VIRTUAL_ENV/bin:$PATH"
-      export UV_PYTHON="$VIRTUAL_ENV/bin/python"
-    elif [ -n "$VIRTUAL_ENV" ] && [ -x "$VIRTUAL_ENV/bin/python" ]; then
-      export UV_PYTHON="$VIRTUAL_ENV/bin/python"
-    else
-      export UV_PYTHON="${pkgs.python314}/bin/python"
     fi
 
     echo 'Protip: run `just` as your start point.' >&2

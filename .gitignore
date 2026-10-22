@@ -18,7 +18,6 @@
 !devenv.lock
 !devenv.nix
 !devenv.yaml
-!flake.nix
 !pyproject.toml
 !uv.lock
 
